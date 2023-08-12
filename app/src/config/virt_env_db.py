@@ -1,0 +1,12 @@
+import os
+
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+DB_PASS=os.environ.get('POSTGRES_PASSWORD')
+DB_USER=os.environ.get('POSTGRES_USER')
+DB_NAME=os.environ.get('POSTGRES_DB')
+DB_HOST=os.environ.get('DB_HOST')
+DB_PORT=os.environ.get('DB_PORT')

@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter
 
 from app.src.internal.models.user import BaseUser
@@ -9,15 +10,15 @@ routes = APIRouter(
 )
 
 
-@routes.get("/users")
-def get_user():
+@routes.get("/users", response_model=List[BaseUser])
+def get_user(limit: int = 15, offset: int = 0):
     """
     Get all users
     """
     return
 
 
-@routes.get("/users/{id}")
+@routes.get("/users/{id}", response_model=BaseUser)
 def get_user(id: int):
     """
     Get a user by his id
