@@ -25,7 +25,7 @@ services:
       - ./storage/postgres-data:/var/lib/postgres/data
     restart: always
 
-  pgadmin4:
+  pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
     restart: always
@@ -36,3 +36,14 @@ services:
       - "5050:80"
     volumes:
       - ./pgadmin:/var/lib/pgadmin
+
+  redis:
+    container_name: redis
+    image: redis:7.0
+    restart: always
+    ports:
+      - '6379:6379'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes: 
+      - ./cache:/data
