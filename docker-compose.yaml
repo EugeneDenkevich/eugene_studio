@@ -14,7 +14,7 @@ services:
     depends_on:
       - db
     restart: always
-    
+
   db:
     container_name: postgre
     image: postgres:latest
