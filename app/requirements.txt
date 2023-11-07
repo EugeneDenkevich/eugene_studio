@@ -9,3 +9,4 @@ python-dotenv==1.0.0
 asyncpg==0.28.0
 fastapi-redis==0.1.11
 redis==4.6.0
+httpie==3.2.2
