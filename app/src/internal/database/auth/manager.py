@@ -12,7 +12,7 @@ from app.src.internal.database.auth.backend import auth_backend
 
 load_dotenv()
 
-SECRET = os.environ.get("REDIS_SECRET")
+SECRET = os.environ.get("REDIS_SECRET", '123456')
 
 
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
