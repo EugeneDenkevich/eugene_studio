@@ -1,8 +1,8 @@
-"""add autoincrement
+"""Database revision
 
-Revision ID: 69d39cf155b2
-Revises: 4e1932f3be33
-Create Date: 2023-08-12 11:04:25.766074
+Revision ID: e8ba3e0b4b5a
+Revises: 1a63adbef868
+Create Date: 2023-11-07 11:11:20.173471
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '69d39cf155b2'
-down_revision: Union[str, None] = '4e1932f3be33'
+revision: str = 'e8ba3e0b4b5a'
+down_revision: Union[str, None] = '1a63adbef868'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
