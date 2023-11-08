@@ -8,11 +8,26 @@ cp app/.env-example app/.env
 docker compose up --build -d
 ```
 
+To check the logining, set up the environment:
+windows:
+```bash
+python -m venv .venv
+.venv/Scripts/activate
+pip install -r app/requirements.txt
+```
+linux:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r app/requirements.txt
+```
+
+And:
 - Use the route http://127.0.0.1:8000/swagger to view and use swagger.
 
 - Use /auth/bearer/register endpoint to register your new user. Use 1 or 2 in the role field.
 
-- After successful registration use /auth/bearer/login. Use your email in the username field. You will get the authorization token which need to get the information by protected route.
+- Use /auth/bearer/login: put your email in the username field. You will get the authorization token which need to get the information by protected route above.
 
 - Use httpie (included in requirements.txt) by this command:
 ```bash
