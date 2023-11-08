@@ -12,7 +12,11 @@ To check the logining, set up the environment:
 windows:
 ```bash
 python -m venv .venv
+```
+```bash
 .venv/Scripts/activate
+```
+```bash
 pip install -r app/requirements.txt
 ```
 linux:
