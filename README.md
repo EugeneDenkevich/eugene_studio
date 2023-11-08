@@ -22,7 +22,11 @@ pip install -r app/requirements.txt
 linux:
 ```bash
 python -m venv .venv
+```
+```bash
 source .venv/bin/activate
+```
+```bash
 pip install -r app/requirements.txt
 ```
 
