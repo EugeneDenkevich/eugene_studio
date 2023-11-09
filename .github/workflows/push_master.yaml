@@ -16,6 +16,8 @@ jobs:
       with:
         python-version: '3.11.5'
 
+    - name: Set Permissions
+        run: sudo chown -R $USER:$USER /home/eugene/apps/eugene_studio
     - name: Build Docker Image
       run: cd app && docker build -t eugenestudio/blog:latest .
 
