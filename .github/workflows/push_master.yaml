@@ -17,7 +17,7 @@ jobs:
         python-version: '3.11.5'
 
     - name: Build Docker Image
-      run: docker build -t eugenestudio/blog:latest .
+      run: docker -f ./app/Dockerfile build -t eugenestudio/blog:latest .
 
     - name: Run tests
       run: |
