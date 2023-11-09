@@ -39,6 +39,8 @@ jobs:
     steps:
       - name: Go to the correct folder
         run: cd /home/eugene/apps/eugene_studio/
+      - name: Create env
+        run: cp /home/eugene/apps/eugene_studio/app/.env-example /home/eugene/apps/eugene_studio/app/.env
       - name: Stop and remove containers, networks
         run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker compose down
       - name: Remove unused data
@@ -50,7 +52,5 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
-      - name: Create env
-        run: cp /home/eugene/apps/eugene_studio/app/.env-example /home/eugene/apps/eugene_studio/app/.env
       - name: docker-compose
         run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker compose up -d
