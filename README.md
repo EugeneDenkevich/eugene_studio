@@ -1,3 +1,4 @@
+![workflow](https://github.com/EugeneDenkevich/eugene_studio/actions/workflows/push_master.yaml/badge.svg)
 # eugene_studio
 
 To run:
