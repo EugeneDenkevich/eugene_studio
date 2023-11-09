@@ -51,7 +51,7 @@ jobs:
     needs: prepare-env
     steps:
       - name: checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Go to the correct folder
         run: cd /home/eugene/apps/eugene_studio/
       - name: Create env
