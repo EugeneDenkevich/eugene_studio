@@ -5,7 +5,7 @@ WORKDIR /blog
 RUN pip3 install --upgrade pip
 RUN pip3 install --upgrade setuptools wheel
 
-COPY ./requirements.txt ./app/requirements.txt
+COPY .app/requirements.txt ./app/requirements.txt
 RUN pip install -r /blog/app/requirements.txt
 
 COPY . /blog/app
