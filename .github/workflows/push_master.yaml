@@ -40,9 +40,9 @@ jobs:
       - name: Go to the correct folder
         run: cd /home/eugene/apps/eugene_studio/
       - name: Stop and remove containers, networks
-        run: echo "Mediator44" | sudo -S docker compose down
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker compose down
       - name: Remove unused data
-        run: sudo docker system prune -a -f
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker system prune -a -f
 
   deploy:
     runs-on: self-hosted
@@ -51,4 +51,4 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
       - name: docker-compose
-        run: sudo docker compose up -d
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker compose up -d
