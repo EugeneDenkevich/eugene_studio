@@ -37,8 +37,6 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
-      # - name: Go to the correct folder
-        # run: cd /home/eugene/apps/eugene_studio/
       - name: Create env
         run: cp /home/eugene/apps/eugene_studio/app/.env-example /home/eugene/apps/eugene_studio/actions-runner/_work/eugene_studio/eugene_studio/app/.env 
       - name: Set Permissions
@@ -54,8 +52,6 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
-      # - name: Go to the correct folder
-      #   run: cd /home/eugene/apps/eugene_studio/
       - name: Create env
         run: cp /home/eugene/apps/eugene_studio/app/.env-example ./app/.env
       - name: docker-compose
