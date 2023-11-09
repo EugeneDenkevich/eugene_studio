@@ -1,0 +1,54 @@
+on:
+ push:
+   branches:
+     - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Docker
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11.5'
+
+    - name: Build Docker Image
+      run: docker build -t eugenestudio/blog:latest .
+
+    - name: Run tests
+      run: |
+        docker network create mynetwork && \
+        docker run --network mynetwork -d -p 5000:5000 --name app eugenestudio/blog:latest && \
+        docker run --network mynetwork eugenestudio/blog:latest pytest
+
+    - name: Login to Docker Hub
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} && \
+        echo "The logining has done successful"
+
+    - name: Push Docker Image to Docker Hub
+      run: docker push eugenestudio/blog:latest
+  
+  # prepare-env:
+  #   runs-on: self-hosted
+  #   needs: build
+  #   steps:
+  #     - name: Go to the correct folder
+  #       run: cd ../../../../app
+  #     - name: Stop and remove containers, networks
+  #       run: sudo docker compose down
+  #     - name: Remove unused data
+  #       run: sudo docker system prune -a -f
+
+  # deploy:
+  #   runs-on: self-hosted
+  #   needs: prepare-env
+  #   steps:
+  #     - name: checkout repo
+  #       uses: actions/checkout@v3
+  #     - name: docker-compose
+  #       run: sudo docker compose up -d
