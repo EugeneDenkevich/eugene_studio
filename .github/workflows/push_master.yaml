@@ -38,7 +38,7 @@ jobs:
     needs: build
     steps:
       - name: Go to the correct folder
-        run: cd ../../../../app
+        run: cd ../app
       - name: Stop and remove containers, networks
         run: sudo docker compose down
       - name: Remove unused data
