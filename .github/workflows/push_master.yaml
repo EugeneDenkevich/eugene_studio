@@ -37,7 +37,7 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
-      - name: Go to the correct folder
+      # - name: Go to the correct folder
         # run: cd /home/eugene/apps/eugene_studio/
       - name: Create env
         run: cp /home/eugene/apps/eugene_studio/app/.env-example /home/eugene/apps/eugene_studio/app/.env 
