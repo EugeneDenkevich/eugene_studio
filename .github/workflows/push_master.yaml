@@ -38,7 +38,7 @@ jobs:
     needs: build
     steps:
       - name: Go to the correct folder
-        run: cd /home/eugene/apps/eugene_studio/
+        # run: cd /home/eugene/apps/eugene_studio/
       - name: Create env
         run: cp /home/eugene/apps/eugene_studio/app/.env-example /home/eugene/apps/eugene_studio/app/.env 
       - name: Stop and remove containers, networks
