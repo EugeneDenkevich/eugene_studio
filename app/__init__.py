@@ -9,11 +9,11 @@ from app.src.internal.database.auth.manager import fastapi_users
 
 tags = [
     {
-        "name": "account",
+        "name": "Account",
         "description": "Operations with user's account"
     },
     {
-        "name": "auth",
+        "name": "Auth",
         "description": "Operations with users by fastapi-users"
     },
 ]
