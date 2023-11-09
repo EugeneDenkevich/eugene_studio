@@ -52,5 +52,7 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
+      - name: Create env
+        run: cp /home/eugene/apps/eugene_studio/app/.env-example /home/eugene/apps/eugene_studio/actions-runner/_work/eugene_studio/eugene_studio/app/.env
       - name: docker-compose
         run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker compose up -d
