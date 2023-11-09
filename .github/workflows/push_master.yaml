@@ -52,7 +52,9 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
+      - name: Go to the correct folder
+        run: cd /home/eugene/apps/eugene_studio/
       - name: Create env
-        run: cp ./app/.env-example ./app/.env
+        run: cp /home/eugene/apps/eugene_studio/app/.env-example ./app/.env
       - name: docker-compose
         run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker compose up -d
