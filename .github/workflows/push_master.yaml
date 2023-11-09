@@ -33,22 +33,22 @@ jobs:
     - name: Push Docker Image to Docker Hub
       run: docker push eugenestudio/blog:latest
   
-  # prepare-env:
-  #   runs-on: self-hosted
-  #   needs: build
-  #   steps:
-  #     - name: Go to the correct folder
-  #       run: cd ../../../../app
-  #     - name: Stop and remove containers, networks
-  #       run: sudo docker compose down
-  #     - name: Remove unused data
-  #       run: sudo docker system prune -a -f
+  prepare-env:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: Go to the correct folder
+        run: cd ../../../../app
+      - name: Stop and remove containers, networks
+        run: sudo docker compose down
+      - name: Remove unused data
+        run: sudo docker system prune -a -f
 
-  # deploy:
-  #   runs-on: self-hosted
-  #   needs: prepare-env
-  #   steps:
-  #     - name: checkout repo
-  #       uses: actions/checkout@v3
-  #     - name: docker-compose
-  #       run: sudo docker compose up -d
+  deploy:
+    runs-on: self-hosted
+    needs: prepare-env
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: docker-compose
+        run: sudo docker compose up -d
