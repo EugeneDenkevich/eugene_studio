@@ -41,7 +41,7 @@ jobs:
         run: cp /home/eugene/apps/EugeneStudio/eugene_studio/app/.env-example /home/eugene/apps/EugeneStudio/eugene_studio/app/.env 
         # run: cp /home/eugene/apps/EugeneStudio/eugene_studio/app/.env-example /home/eugene/apps/EugeneStudio/actions-runner/_work/eugene_studio/eugene_studio/app/.env 
       - name: Set Permissions
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S chown -R $USER:$USER /home/eugene/apps/eugene_studio
+        run: echo ${{ secrets.EUGENE_PASSWORD }} | sudo -S chown -R $USER:$USER /home/eugene/apps/eugene_studio
       - name: Stop and remove containers, networks
         run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker compose down
       - name: Remove unused data
