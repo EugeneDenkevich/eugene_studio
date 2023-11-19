@@ -4,10 +4,12 @@ on:
      - master
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
     
     steps:
+
     - name: Checkout repository
       uses: actions/checkout@v4
 
@@ -19,12 +21,6 @@ jobs:
     - name: Build Docker Image
       run: cd app && docker build -t eugenestudio/blog:latest .
 
-    # - name: Run tests
-    #   run: |
-    #     docker network create mynetwork && \
-    #     docker run --network mynetwork -d -p 5000:5000 --name app eugenestudio/blog:latest && \
-    #     docker run --network mynetwork eugenestudio/blog:latest pytest
-
     - name: Login to Docker Hub
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} && \
@@ -35,25 +31,30 @@ jobs:
   
   prepare-env:
     runs-on: self-hosted
-    needs: build
     steps:
-      - name: Create env
-        run: cp /home/eugene/apps/EugeneStudio/eugene_studio/app/.env-example /home/eugene/apps/EugeneStudio/eugene_studio/app/.env 
-        # run: cp /home/eugene/apps/EugeneStudio/eugene_studio/app/.env-example /home/eugene/apps/EugeneStudio/actions-runner/_work/eugene_studio/eugene_studio/app/.env 
-      - name: Set Permissions
-        run: echo ${{ secrets.EUGENE_PASSWORD }} | sudo -S chown -R $USER:$USER /home/eugene/apps/eugene_studio
-      - name: Stop and remove containers, networks
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker compose down
-      - name: Remove unused data
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker system prune -a -f
 
-  deploy:
-    runs-on: self-hosted
-    needs: prepare-env
-    steps:
       - name: checkout repo
         uses: actions/checkout@v4
+
       - name: Create env
-        run: cp /home/eugene/apps/eugene_studio/app/.env-example ./app/.env
-      - name: docker-compose
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker compose up -d
+        run: cp ./app/.env-example ./app/.env 
+
+      - name: Set Permissions
+        run: echo ${{ secrets.EUGENE_PASSWORD }} | sudo -S chown -R $USER:$USER /home/eugene/apps/eugene_studio
+
+      - name: Stop and remove containers, networks
+        run: echo ${{ secrets.EUGENE_PASSWORD }} | sudo -S docker compose down
+
+      - name: Remove unused data
+        run: echo ${{ secrets.EUGENE_PASSWORD }} | sudo -S docker system prune -a -f
+
+  # deploy:
+  #   runs-on: self-hosted
+  #   needs: prepare-env
+  #   steps:
+  #     - name: checkout repo
+  #       uses: actions/checkout@v4
+  #     - name: Create env
+  #       run: cp /home/eugene/apps/eugene_studio/app/.env-example ./app/.env
+  #     - name: docker-compose
+  #       run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker compose up -d
