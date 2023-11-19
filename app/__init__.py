@@ -9,7 +9,7 @@ from app.src.internal.database.auth.manager import fastapi_users
 
 tags = [
     {
-        "name": "account-test",
+        "name": "account",
         "description": "Operations with user's account"
     },
     {
@@ -25,7 +25,9 @@ def create_app(_=None) -> FastAPI:
     """
     # Create the FastAPI instance
     app = FastAPI(
+        title="Eugene Studio. Blog",
         docs_url="/swagger",
+        version='0.02',
         openapi_tags=tags
     )
 
