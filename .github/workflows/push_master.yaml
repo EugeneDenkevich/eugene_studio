@@ -54,4 +54,4 @@ jobs:
     steps:
 
       - name: docker-compose
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | sudo -S docker compose up -d
+        run: echo ${{ secrets.EUGENE_PASSWORD }} | sudo -S docker compose up -d
