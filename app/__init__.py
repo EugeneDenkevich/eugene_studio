@@ -27,7 +27,7 @@ def create_app(_=None) -> FastAPI:
     app = FastAPI(
         title="Eugene Studio. Blog",
         docs_url="/swagger",
-        version='0.02',
+        version='0.03',
         openapi_tags=tags
     )
 
