@@ -1,5 +1,5 @@
 ![workflow](https://github.com/EugeneDenkevich/eugene_studio/actions/workflows/push_master.yaml/badge.svg)
-# eugene_studio
+# Eugene Studio
 Done:
 - registration
 - logging in
