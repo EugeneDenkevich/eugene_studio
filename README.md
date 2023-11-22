@@ -1,5 +1,20 @@
 ![workflow](https://github.com/EugeneDenkevich/eugene_studio/actions/workflows/push_master.yaml/badge.svg)
 # Eugene Studio
+
+### Used:
+- FastAPI
+- FastAPIUsers
+- SQLAlchemy
+- PostgreSQL
+- Pgadmin
+- Alembic
+- Redis
+- GitHub Actions
+- Git runners
+- Docker Compose
+- DockerHub
+- AWS
+
 ### Done:
 - Registration
 - Logging in
