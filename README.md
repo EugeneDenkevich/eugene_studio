@@ -1,9 +1,9 @@
 ![workflow](https://github.com/EugeneDenkevich/eugene_studio/actions/workflows/push_master.yaml/badge.svg)
 # Eugene Studio
 ### Done:
-- registration
-- logging in
-- logging out
+- Registration
+- Logging in
+- Logging out
 - CI/CD
 
 To run:
