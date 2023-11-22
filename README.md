@@ -1,5 +1,10 @@
 ![workflow](https://github.com/EugeneDenkevich/eugene_studio/actions/workflows/push_master.yaml/badge.svg)
 # eugene_studio
+Done:
+- registration
+- logging in
+- logging out
+- CI/CD
 
 To run:
 ```bash
