@@ -8,14 +8,16 @@ DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{D
 engine = create_async_engine(DATABASE_URL)
 async_session_maker = async_sessionmaker(engine, expire_on_commit=False)
 
+
 async def get_async_session():
     async with async_session_maker() as session:
         yield session
 
+
 async def create_roles(session):
     roles_to_create = [
-        Role(status='user', permissions=''),
-        Role(status='admin', permissions=''),
+        Role(status="user", permissions=""),
+        Role(status="admin", permissions=""),
     ]
     for role in roles_to_create:
         existing_role = await session.execute(
@@ -25,10 +27,12 @@ async def create_roles(session):
             session.add(role)
     await session.commit()
 
+
 async def main():
     async with async_session_maker() as session:
         await create_roles(session)
-    print('Role setup completed')
+    print("Role setup completed")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     asyncio.run(main())

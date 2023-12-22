@@ -6,10 +6,7 @@ from app.src.internal.database.models import User
 
 current_user = fastapi_users.current_user()
 
-routes = APIRouter(
-    prefix="",
-    tags=["account"]
-)
+routes = APIRouter(prefix="", tags=["account"])
 
 
 @routes.get("/protected-route")

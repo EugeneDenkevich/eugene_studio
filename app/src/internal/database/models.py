@@ -1,9 +1,19 @@
 from datetime import datetime
 
 from sqlalchemy import (
-    MetaData, Table, Column, String, Integer, TIMESTAMP, Boolean,
-    ForeignKey, JSON)
-from sqlalchemy.orm import (declarative_base, )
+    MetaData,
+    Table,
+    Column,
+    String,
+    Integer,
+    TIMESTAMP,
+    Boolean,
+    ForeignKey,
+    JSON,
+)
+from sqlalchemy.orm import (
+    declarative_base,
+)
 
 
 Base = declarative_base()
@@ -11,7 +21,7 @@ Base = declarative_base()
 
 class Role(Base):
     __tablename__ = "role"
-    __table_args__ = {'extend_existing': True} 
+    __table_args__ = {"extend_existing": True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     status = Column(String, nullable=False)
@@ -20,7 +30,7 @@ class Role(Base):
 
 class User(Base):
     __tablename__ = "user"
-    __table_args__ = {'extend_existing': True} 
+    __table_args__ = {"extend_existing": True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     email = Column(String, nullable=False)

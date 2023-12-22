@@ -12,7 +12,7 @@ from app.src.internal.database.auth.backend import auth_backend
 
 load_dotenv()
 
-SECRET = os.environ.get("REDIS_SECRET", '123456')
+SECRET = os.environ.get("REDIS_SECRET", "123456")
 
 
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
@@ -31,14 +31,13 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         self, user: User, token: str, request: Optional[Request] = None
     ):
         print(f"Verification requested for user {user.id}. Verification token: {token}")
-    
+
     async def create(
         self,
         user_create: schemas.UC,
         safe: bool = False,
         request: Optional[Request] = None,
     ) -> models.UP:
-
         await self.validate_password(user_create.password, user_create)
 
         existing_user = await self.user_db.get_by_email(user_create.email)
@@ -56,7 +55,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
 
         created_user = await self.user_db.create(user_dict)
 
-        await self.on_after_register(created_user, request) 
+        await self.on_after_register(created_user, request)
 
         return created_user
 

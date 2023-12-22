@@ -1,7 +1,7 @@
 import sys
 import os
 
-conf_path = os.path.join(os.getcwd(), '..', '..', '..', '..')
+conf_path = os.path.join(os.getcwd(), "..", "..", "..", "..")
 sys.path.append(conf_path)
 
 from logging.config import fileConfig
@@ -11,8 +11,7 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from app.src.config.virt_env_db import (DB_HOST, DB_NAME,
-                        DB_PASS, DB_PORT, DB_USER)
+from app.src.config.virt_env_db import DB_HOST, DB_NAME, DB_PASS, DB_PORT, DB_USER
 from app.src.internal.database.models import Base
 
 
@@ -82,9 +81,7 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()
